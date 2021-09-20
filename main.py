@@ -55,25 +55,25 @@ def csv_dict_reader(file_obj):
     reader = csv.DictReader(file_obj, delimiter=';')
     i = 1
     for row in reader:
-        citizen = ''
-        id_gkh = row["\ufeffid"]
-        url_home = 'https://www.reformagkh.ru/myhouse/profile/passport/' + id_gkh
-        html = get_session().get(url=url_home, headers=HEADERS, params=0)
-        soup = BS(html.text, 'html.parser')
-        print(i)
-        i += 1
-        specification = soup.select('.mr-5')
-        for el in specification:
-            if el.text == 'Численность жителей, чел.':
-                element = el.find_next('div')
-                try:
-                    citizen = element[0].text
-                    print(citizen)
-                except:
-                    break
-                break
-            else:
-                continue
+        # citizen = ''
+        # id_gkh = row["\ufeffid"]
+        # url_home = 'https://www.reformagkh.ru/myhouse/profile/passport/' + id_gkh
+        # html = get_session().get(url=url_home, headers=HEADERS, params=0)
+        # soup = BS(html.text, 'html.parser')
+        # print(i)
+        # i += 1
+        # specification = soup.select('.mr-5')
+        # for el in specification:
+        #     if el.text == 'Численность жителей, чел.':
+        #         element = el.find_next('div')
+        #         try:
+        #             citizen = element[0].text
+        #             print(citizen)
+        #         except:
+        #             break
+        #         break
+        #     else:
+        #         continue
         item = Reestr(
             id_gkh=row["\ufeffid"],
             region_id=row["region_id"],
@@ -134,8 +134,8 @@ def csv_dict_reader(file_obj):
             gas_type=row["gas_type"],
             ventilation_type=row["ventilation_type"],
             firefighting_type=row["firefighting_type"],
-            drainage_type=row["drainage_type"],
-            citizen_count=citizen
+            drainage_type=row["drainage_type"]
+            # citizen_count=citizen
         )
         s.add(item)
     s.commit()

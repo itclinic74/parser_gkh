@@ -73,7 +73,7 @@ class Reestr(Base):
     ventilation_type = Column(String(200), nullable=True)
     firefighting_type = Column(String(200), nullable=True)
     drainage_type = Column(String(200), nullable=True)
-    citizen_count = Column(String(200), nullable=True)
+    # citizen_count = Column(String(200), nullable=True)
 
 
 Base.metadata.drop_all(engine)
