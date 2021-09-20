@@ -1,0 +1,5 @@
+host = 'localhost'
+user = 'anton'
+password = 'Qwerta12$'
+port = '3306'
+db_name = 'db'
