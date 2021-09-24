@@ -55,6 +55,7 @@ def csv_dict_reader(file_obj):
     reader = csv.DictReader(file_obj, delimiter=';')
     i = 1
     for row in reader:
+        # Забирает количество жителей по каждой записи
         # citizen = ''
         # id_gkh = row["\ufeffid"]
         # url_home = 'https://www.reformagkh.ru/myhouse/profile/passport/' + id_gkh
@@ -137,7 +138,11 @@ def csv_dict_reader(file_obj):
             drainage_type=row["drainage_type"]
             # citizen_count=citizen
         )
-        s.add(item)
+        try:
+            s.add(item)
+        except:
+            s.rollback()
+            print('Ошибка добавления в БД')
     s.commit()
 
 

@@ -76,5 +76,5 @@ class Reestr(Base):
     # citizen_count = Column(String(200), nullable=True)
 
 
-Base.metadata.drop_all(engine)
+#Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
